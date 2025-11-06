@@ -4,6 +4,8 @@ from fastapi.responses import JSONResponse
 from backend.config import settings
 from backend.services.neo4j_client import test_connection
 from backend.services.document_processor import extract_text
+from backend.services.entity_extractor import extract_entities_with_claude
+from backend.validation import validate_entities
 
 # Create FastAPI app
 app = FastAPI(
@@ -59,30 +61,52 @@ async def upload_document(file: UploadFile = File(...)):
     """
     Upload and process a document.
 
-    Extracts text from PDF, DOCX, or TXT files.
+    Extracts text, then extracts entities using Claude API.
 
     Args:
-        file: Document file to process
+        file: Document file to process (.pdf, .docx, .txt)
 
     Returns:
-        JSON with filename, file type, and extracted text statistics
+        JSON with extracted entities (people, projects, relationships) and metadata
     """
     # Validate file was provided
     if not file.filename:
         raise HTTPException(status_code=400, detail="No file provided")
 
-    # Extract text
+    # Step 1: Extract text
     text = await extract_text(file)
 
-    # Return response with text statistics
+    # Step 2: Extract entities using Claude API
+    try:
+        entities = await extract_entities_with_claude(text)
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Entity extraction failed: {str(e)}"
+        )
+
+    # Step 3: Validate entities
+    valid, errors = validate_entities(entities)
+    if not valid:
+        raise HTTPException(
+            status_code=422,
+            detail={
+                "message": "Extracted entities failed validation",
+                "errors": errors,
+                "entities": entities
+            }
+        )
+
+    # Return extracted entities with metadata
     return {
         "filename": file.filename,
-        "content_type": file.content_type,
         "text_length": len(text),
-        "char_count": len(text),
-        "word_count": len(text.split()),
-        "line_count": len(text.splitlines()),
-        "preview": text[:200] + "..." if len(text) > 200 else text
+        "entities": entities,
+        "summary": {
+            "people_count": len(entities.get("people", [])),
+            "projects_count": len(entities.get("projects", [])),
+            "relationships_count": len(entities.get("relationships", []))
+        }
     }
 
 
