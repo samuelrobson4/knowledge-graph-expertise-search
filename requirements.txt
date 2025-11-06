@@ -1,0 +1,13 @@
+# Knowledge Graph MVP - Python Dependencies
+
+# Anthropic Claude API
+anthropic>=0.39.0
+
+# PDF text extraction
+pymupdf>=1.24.0
+
+# PDF generation for testing
+reportlab>=4.0.0
+
+# Environment variables
+python-dotenv>=1.0.0
