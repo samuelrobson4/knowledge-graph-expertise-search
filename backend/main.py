@@ -5,6 +5,7 @@ from backend.config import settings
 from backend.services.neo4j_client import test_connection
 from backend.services.document_processor import extract_text
 from backend.services.entity_extractor import extract_entities_with_claude
+from backend.services.neo4j_storage import store_entities_in_neo4j, get_graph_stats
 from backend.validation import validate_entities
 
 # Create FastAPI app
@@ -97,17 +98,45 @@ async def upload_document(file: UploadFile = File(...)):
             }
         )
 
-    # Return extracted entities with metadata
+    # Step 4: Store entities in Neo4j
+    try:
+        storage_stats = await store_entities_in_neo4j(entities)
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to store entities in Neo4j: {str(e)}"
+        )
+
+    # Return success with storage stats
     return {
         "filename": file.filename,
         "text_length": len(text),
-        "entities": entities,
-        "summary": {
+        "extraction_summary": {
             "people_count": len(entities.get("people", [])),
             "projects_count": len(entities.get("projects", [])),
             "relationships_count": len(entities.get("relationships", []))
-        }
+        },
+        "storage_stats": storage_stats,
+        "message": "Document processed and entities stored successfully"
     }
+
+
+@app.get("/stats")
+async def get_stats():
+    """
+    Get knowledge graph statistics.
+
+    Returns:
+        JSON with node counts and relationship counts
+    """
+    try:
+        stats = await get_graph_stats()
+        return stats
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to retrieve graph stats: {str(e)}"
+        )
 
 
 @app.on_event("shutdown")
