@@ -1,12 +1,7 @@
 """Neo4j database connection management."""
 from neo4j import GraphDatabase, Driver
 from typing import Optional
-import sys
-import os
-
-# Add parent directory to path to import config
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import settings
+from backend.config import settings
 
 
 class Neo4jClient:

@@ -1,8 +1,8 @@
 """FastAPI application for Knowledge Graph API."""
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-from config import settings
-from services.neo4j_client import test_connection
+from backend.config import settings
+from backend.services.neo4j_client import test_connection
 
 # Create FastAPI app
 app = FastAPI(
@@ -56,5 +56,5 @@ async def health_check():
 @app.on_event("shutdown")
 async def shutdown_event():
     """Cleanup on application shutdown."""
-    from services.neo4j_client import Neo4jClient
+    from backend.services.neo4j_client import Neo4jClient
     Neo4jClient.close_driver()
