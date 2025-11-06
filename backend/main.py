@@ -1,8 +1,9 @@
 """FastAPI application for Knowledge Graph API."""
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.responses import JSONResponse
 from backend.config import settings
 from backend.services.neo4j_client import test_connection
+from backend.services.document_processor import extract_text
 
 # Create FastAPI app
 app = FastAPI(
@@ -51,6 +52,38 @@ async def health_check():
 
     status_code = 200 if healthy else 503
     return JSONResponse(content=status, status_code=status_code)
+
+
+@app.post("/upload")
+async def upload_document(file: UploadFile = File(...)):
+    """
+    Upload and process a document.
+
+    Extracts text from PDF, DOCX, or TXT files.
+
+    Args:
+        file: Document file to process
+
+    Returns:
+        JSON with filename, file type, and extracted text statistics
+    """
+    # Validate file was provided
+    if not file.filename:
+        raise HTTPException(status_code=400, detail="No file provided")
+
+    # Extract text
+    text = await extract_text(file)
+
+    # Return response with text statistics
+    return {
+        "filename": file.filename,
+        "content_type": file.content_type,
+        "text_length": len(text),
+        "char_count": len(text),
+        "word_count": len(text.split()),
+        "line_count": len(text.splitlines()),
+        "preview": text[:200] + "..." if len(text) > 200 else text
+    }
 
 
 @app.on_event("shutdown")
