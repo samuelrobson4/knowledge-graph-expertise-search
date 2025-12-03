@@ -1,0 +1,199 @@
+================================================================================
+ENTITY EXTRACTION VALIDATION REPORT
+================================================================================
+Generated: 2025-12-02 18:29:13
+Source: tests/02_knowledge_graph_data/testreport_entities.json
+
+--------------------------------------------------------------------------------
+VALIDATION STATUS
+--------------------------------------------------------------------------------
+Overall: ✓ PASSED
+Errors: 0
+Warnings: 0
+
+--------------------------------------------------------------------------------
+EXTRACTION STATISTICS
+--------------------------------------------------------------------------------
+People: 10
+Projects: 15
+Relationships: 42
+Total Hard Skills: 46
+Total Soft Skills: 22
+Avg Hard Skills per Person: 4.6
+Avg Soft Skills per Person: 2.2
+
+--------------------------------------------------------------------------------
+EXTRACTED ENTITIES DETAIL
+--------------------------------------------------------------------------------
+
+PEOPLE:
+
+  • Sarah Chen
+    Hard Skills: GraphQL, TypeScript, Node.js, React Native, REST API
+    Soft Skills: leadership, mentoring, communication
+
+  • Marcus Rodriguez
+    Hard Skills: PostgreSQL, Node.js, TypeScript, Redis, AWS, Python, FastAPI, Apache Kafka, SQL
+    Soft Skills: problem-solving, collaboration
+
+  • Priya Sharma
+    Hard Skills: AWS, Terraform, Docker, Kubernetes, Redis, Prometheus
+    Soft Skills: collaboration
+
+  • Emily Thompson
+    Hard Skills: Figma, Adobe XD, Jira
+    Soft Skills: leadership, strategic thinking, communication, project management
+
+  • David Park
+    Hard Skills: Figma, Adobe XD
+    Soft Skills: collaboration
+
+  • Robert Chen
+    Hard Skills: Excel, Power BI, Salesforce
+    Soft Skills: leadership, project management, strategic thinking, communication
+
+  • Lisa Martinez
+    Hard Skills: Excel, Power BI, SQL, Salesforce
+    Soft Skills: analytical skills, collaboration
+
+  • James Kim
+    Hard Skills: Vue.js, Django, REST API, GraphQL, WebSockets, Node.js, React, TypeScript
+    Soft Skills: collaboration
+
+  • Aisha Williams
+    Hard Skills: Python, Tableau, SQL, Apache Kafka
+    Soft Skills: analytical skills, collaboration
+
+  • Tom Anderson
+    Hard Skills: Zendesk, SQL
+    Soft Skills: communication, collaboration
+
+PROJECTS:
+
+  • API Migration Project
+    Description: Migration of REST API to GraphQL with TypeScript implementation, including database schema redesign and GraphQL resolver development.
+    Technologies: GraphQL, TypeScript, Node.js, PostgreSQL, Redis, REST API
+
+  • Infrastructure Modernization
+    Description: AWS infrastructure audit and modernization using Terraform, Docker, and Kubernetes for automated deployment workflows and cost optimization.
+    Technologies: AWS, Terraform, Docker, Kubernetes, PostgreSQL, Redis, Prometheus
+
+  • Mobile App Feature Roadmap
+    Description: Development and implementation of new mobile app features including stakeholder interviews, user research, wireframing, and React Native implementation.
+    Technologies: Figma, Adobe XD, React Native, TypeScript, Node.js, Jira
+
+  • Q3 Revenue Planning
+    Description: Quarterly planning initiative with sales and finance teams including financial modeling and Power BI dashboards for revenue tracking.
+    Technologies: Excel, Power BI, Salesforce
+
+  • Customer Dashboard Redesign
+    Description: Frontend redesign of customer dashboard using Vue.js with GraphQL integration, real-time updates via WebSockets, and React component optimization.
+    Technologies: Vue.js, Django, REST API, GraphQL, WebSockets, Node.js, React Native, Docker, Kubernetes
+
+  • User Onboarding Optimization
+    Description: Analysis and redesign of user onboarding flow to reduce drop-off rates, including data analysis, A/B testing, and new design implementation.
+    Technologies: Python, Tableau, Figma, Adobe XD
+
+  • Customer Retention Program
+    Description: Launch and expansion of customer retention program to reduce churn using automated Zendesk workflows and SQL-based analytics.
+    Technologies: Zendesk, SQL, Power BI
+
+  • Sales Process Automation
+    Description: Automation of sales workflows in Salesforce to reduce manual data entry and sales cycle time through workflow mapping and automation rules.
+    Technologies: Salesforce, Power BI
+
+  • Analytics Dashboard Enhancement
+    Description: Enhancement of analytics dashboard with new views, real-time metrics, and predictive analytics features using Tableau and Python.
+    Technologies: Tableau, Python, React
+
+  • Mobile API Development
+    Description: Development of backend API for mobile app using FastAPI with authentication, admin panel, Redis session management, and GraphQL integration.
+    Technologies: FastAPI, Python, PostgreSQL, Redis, GraphQL, Vue.js, Kubernetes, AWS
+
+  • Data Pipeline Modernization
+    Description: Modernization of data pipelines using Python ETL scripts, Apache Kafka for real-time streaming, and machine learning model integration processing millions of records daily.
+    Technologies: Python, Apache Kafka, PostgreSQL, SQL, Tableau, Kubernetes, Docker, AWS
+
+  • Q4 Planning
+    Description: Cross-functional Q4 planning initiative including financial forecasting, team budgets, and operational alignment across departments.
+    Technologies: Excel, Power BI, Salesforce
+
+  • Platform Security Enhancement
+    Description: Comprehensive security assessment and enhancement across all services including AWS security best practices, penetration testing, and infrastructure hardening.
+    Technologies: AWS, Terraform, TypeScript, Kubernetes, Docker, FastAPI
+
+  • Customer Success Expansion
+    Description: Launch of enterprise customer success program with operational processes and Zendesk workflows to drive account expansion and upsell opportunities.
+    Technologies: Zendesk, Salesforce
+
+  • Annual Planning 2025
+    Description: Comprehensive 2025 annual planning initiative with financial modeling for multiple growth scenarios and cross-departmental coordination.
+    Technologies: Power BI, Excel
+
+RELATIONSHIPS:
+
+  • Aisha Williams
+    - User Onboarding Optimization (data analyst)
+    - Mobile App Feature Roadmap (user researcher)
+    - Analytics Dashboard Enhancement (analytics lead)
+    - Data Pipeline Modernization (analytics engineer)
+
+  • David Park
+    - Mobile App Feature Roadmap (designer)
+    - User Onboarding Optimization (designer)
+
+  • Emily Thompson
+    - Mobile App Feature Roadmap (product lead)
+    - User Onboarding Optimization (product manager)
+    - Analytics Dashboard Enhancement (product manager)
+    - Q4 Planning (product lead)
+
+  • James Kim
+    - API Migration Project (developer)
+    - Customer Dashboard Redesign (frontend developer)
+    - Analytics Dashboard Enhancement (frontend engineer)
+    - Mobile API Development (admin panel developer)
+
+  • Lisa Martinez
+    - Q3 Revenue Planning (financial analyst)
+    - Customer Retention Program (analytics lead)
+    - Q4 Planning (financial analyst)
+    - Sales Process Automation (roi analyst)
+    - Annual Planning 2025 (financial modeler)
+
+  • Marcus Rodriguez
+    - API Migration Project (database engineer)
+    - Infrastructure Modernization (database engineer)
+    - Mobile API Development (backend lead)
+    - Data Pipeline Modernization (pipeline engineer)
+    - Platform Security Enhancement (api security engineer)
+
+  • Priya Sharma
+    - Infrastructure Modernization (infrastructure lead)
+    - Customer Dashboard Redesign (deployment engineer)
+    - Mobile API Development (infrastructure engineer)
+    - Data Pipeline Modernization (infrastructure engineer)
+    - Platform Security Enhancement (infrastructure security engineer)
+
+  • Robert Chen
+    - Q3 Revenue Planning (planning lead)
+    - Sales Process Automation (automation lead)
+    - Q4 Planning (planning lead)
+    - Customer Success Expansion (process designer)
+    - Annual Planning 2025 (planning lead)
+
+  • Sarah Chen
+    - API Migration Project (lead architect)
+    - Customer Dashboard Redesign (code reviewer)
+    - Mobile API Development (technical advisor)
+    - Platform Security Enhancement (security lead)
+
+  • Tom Anderson
+    - Customer Retention Program (program lead)
+    - Sales Process Automation (process consultant)
+    - Customer Success Expansion (program lead)
+    - Annual Planning 2025 (customer insights lead)
+
+================================================================================
+END OF REPORT
+================================================================================

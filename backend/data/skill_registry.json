@@ -1,0 +1,241 @@
+{
+  "React": {
+    "category": "hard",
+    "synonyms": [
+      "react.js",
+      "reactjs",
+      "react native",
+      "react-native"
+    ]
+  },
+  "Node.js": {
+    "category": "hard",
+    "synonyms": [
+      "node",
+      "nodejs",
+      "node js"
+    ]
+  },
+  "Python": {
+    "category": "hard",
+    "synonyms": [
+      "python3",
+      "py",
+      "python 3"
+    ]
+  },
+  "JavaScript": {
+    "category": "hard",
+    "synonyms": [
+      "js",
+      "javascript",
+      "ecmascript"
+    ]
+  },
+  "TypeScript": {
+    "category": "hard",
+    "synonyms": [
+      "ts",
+      "typescript"
+    ]
+  },
+  "AWS": {
+    "category": "hard",
+    "synonyms": [
+      "amazon web services",
+      "aws cloud"
+    ]
+  },
+  "Docker": {
+    "category": "hard",
+    "synonyms": [
+      "docker engine",
+      "docker container"
+    ]
+  },
+  "Kubernetes": {
+    "category": "hard",
+    "synonyms": [
+      "k8s",
+      "k8",
+      "kube"
+    ]
+  },
+  "PostgreSQL": {
+    "category": "hard",
+    "synonyms": [
+      "postgres",
+      "psql",
+      "postgresql"
+    ]
+  },
+  "SQL": {
+    "category": "hard",
+    "synonyms": [
+      "structured query language",
+      "sql database"
+    ]
+  },
+  "GraphQL": {
+    "category": "hard",
+    "synonyms": [
+      "gql",
+      "graphql api"
+    ]
+  },
+  "REST API": {
+    "category": "hard",
+    "synonyms": [
+      "rest",
+      "restful api",
+      "restful"
+    ]
+  },
+  "Git": {
+    "category": "hard",
+    "synonyms": [
+      "github",
+      "gitlab",
+      "git version control"
+    ]
+  },
+  "CI/CD": {
+    "category": "hard",
+    "synonyms": [
+      "continuous integration",
+      "cicd",
+      "ci cd"
+    ]
+  },
+  "leadership": {
+    "category": "soft",
+    "synonyms": [
+      "leading",
+      "lead",
+      "leader"
+    ]
+  },
+  "communication": {
+    "category": "soft",
+    "synonyms": [
+      "communicating",
+      "communicate"
+    ]
+  },
+  "problem-solving": {
+    "category": "soft",
+    "synonyms": [
+      "problem solving",
+      "troubleshooting",
+      "debugging"
+    ]
+  },
+  "project management": {
+    "category": "soft",
+    "synonyms": [
+      "pm",
+      "managing projects",
+      "project manager"
+    ]
+  },
+  "collaboration": {
+    "category": "soft",
+    "synonyms": [
+      "team collaboration",
+      "teamwork",
+      "team work"
+    ]
+  },
+  "mentoring": {
+    "category": "soft",
+    "synonyms": [
+      "mentorship",
+      "coaching",
+      "mentor"
+    ]
+  },
+  "analytical skills": {
+    "category": "soft",
+    "synonyms": [
+      "analytical",
+      "analysis",
+      "analytical thinking"
+    ]
+  },
+  "strategic thinking": {
+    "category": "soft",
+    "synonyms": [
+      "strategy",
+      "strategic",
+      "strategic planning"
+    ]
+  },
+  "Apache Kafka": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Redis": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Terraform": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Prometheus": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Figma": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Adobe XD": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Jira": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Excel": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Power BI": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Salesforce": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Django": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "WebSockets": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Vue.js": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Tableau": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "Zendesk": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "CRM": {
+    "category": "hard",
+    "synonyms": []
+  },
+  "FastAPI": {
+    "category": "hard",
+    "synonyms": []
+  }
+}

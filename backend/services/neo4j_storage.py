@@ -82,6 +82,82 @@ async def store_entities_in_neo4j(entities: Dict) -> Dict:
     }
 
 
+async def get_graph_data(limit: int = 500) -> Dict:
+    """
+    Get graph data for visualization.
+
+    Args:
+        limit: Maximum number of relationships to return
+
+    Returns:
+        Dictionary with nodes and links for graph visualization
+    """
+    driver = get_driver()
+
+    with driver.session() as session:
+        # Query all nodes and relationships
+        result = session.run("""
+            MATCH (n)-[r]->(m)
+            RETURN n, r, m
+            LIMIT $limit
+        """, limit=limit)
+
+        nodes_dict = {}
+        links = []
+
+        for record in result:
+            source_node = record["n"]
+            target_node = record["m"]
+            relationship = record["r"]
+
+            # Extract source node
+            source_labels = list(source_node.labels)
+            source_type = source_labels[0] if source_labels else "Unknown"
+            source_id = f"{source_type}:{source_node['name']}"
+
+            if source_id not in nodes_dict:
+                nodes_dict[source_id] = {
+                    "id": source_id,
+                    "label": source_node["name"],
+                    "type": source_type,
+                    "properties": dict(source_node)
+                }
+
+            # Extract target node
+            target_labels = list(target_node.labels)
+            target_type = target_labels[0] if target_labels else "Unknown"
+            target_id = f"{target_type}:{target_node['name']}"
+
+            if target_id not in nodes_dict:
+                nodes_dict[target_id] = {
+                    "id": target_id,
+                    "label": target_node["name"],
+                    "type": target_type,
+                    "properties": dict(target_node)
+                }
+
+            # Extract relationship
+            rel_type = relationship.type
+            links.append({
+                "source": source_id,
+                "target": target_id,
+                "type": rel_type,
+                "label": rel_type.lower().replace("_", " ")
+            })
+
+        nodes = list(nodes_dict.values())
+
+        return {
+            "nodes": nodes,
+            "links": links,
+            "stats": {
+                "node_count": len(nodes),
+                "link_count": len(links),
+                "truncated": len(links) >= limit
+            }
+        }
+
+
 async def get_graph_stats() -> Dict:
     """
     Get statistics about the knowledge graph.

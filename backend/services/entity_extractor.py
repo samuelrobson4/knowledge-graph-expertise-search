@@ -3,6 +3,7 @@ from anthropic import Anthropic
 import json
 from typing import Dict
 from backend.config import settings
+from backend.services.skill_normalizer import normalize_entities
 
 
 async def extract_entities_with_claude(text: str) -> Dict:
@@ -122,6 +123,10 @@ Return ONLY the JSON object, no additional text or explanation."""
     # Parse JSON response
     try:
         entities = json.loads(response_text)
-        return entities
     except json.JSONDecodeError as e:
         raise Exception(f"Failed to parse Claude response as JSON: {str(e)}\n\nResponse: {response_text}")
+
+    # Normalize skills
+    entities = await normalize_entities(entities)
+
+    return entities

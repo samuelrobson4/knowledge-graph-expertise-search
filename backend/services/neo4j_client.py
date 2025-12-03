@@ -8,11 +8,37 @@ class Neo4jClient:
     """Singleton Neo4j driver manager."""
 
     _driver: Optional[Driver] = None
+    _constraints_initialized: bool = False
+
+    @classmethod
+    def _ensure_constraints(cls, driver: Driver):
+        """
+        Ensure Neo4j constraints exist (idempotent).
+
+        Creates uniqueness constraints for Person, Skill, and Project names.
+        Auto-creates indexes for Community Edition.
+        """
+        if cls._constraints_initialized:
+            return
+
+        constraints = [
+            "CREATE CONSTRAINT person_name_unique IF NOT EXISTS FOR (p:Person) REQUIRE p.name IS UNIQUE",
+            "CREATE CONSTRAINT skill_name_unique IF NOT EXISTS FOR (s:Skill) REQUIRE s.name IS UNIQUE",
+            "CREATE CONSTRAINT project_name_unique IF NOT EXISTS FOR (pr:Project) REQUIRE pr.name IS UNIQUE"
+        ]
+
+        with driver.session() as session:
+            for constraint in constraints:
+                session.run(constraint)
+
+        cls._constraints_initialized = True
 
     @classmethod
     def get_driver(cls) -> Driver:
         """
         Get or create Neo4j driver instance.
+
+        Auto-applies constraints on first connection.
 
         Returns:
             Neo4j driver instance
@@ -22,6 +48,7 @@ class Neo4jClient:
                 settings.neo4j_uri,
                 auth=(settings.neo4j_user, settings.neo4j_password)
             )
+            cls._ensure_constraints(cls._driver)
         return cls._driver
 
     @classmethod
