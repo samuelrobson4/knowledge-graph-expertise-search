@@ -57,3 +57,8 @@ tmp/
 # Project docs
 project_docs/
 scripts/
+
+# Video files
+*.mp4
+*.avi
+*.mov
